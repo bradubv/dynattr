@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <title>Dynamic Attributes</title>
+
+  <body>
+    <h1>Dynamic Attributes</h1>
+    <div ng-controller="FoodItem">
+      <div ng-repeat="attrib in attribs">
+        <input type="text" placeholder="{{attrib.namePlaceholder}}" ng-model="attrib.name">
+        <input type="text" placeholder="enter value ..." ng-model="attrib.text">
+      </div>
+      <button ng-click="add()">New Attribute</button>
+      <button ng-click="save()">Save Object</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script type="text/javascript">
+
+      var FoodItem = function($scope){
+        $scope.attribs = [];
+
+        $scope.add = function () {
+          $scope.attribs.push({ 
+            name: "",
+            namePlaceholder: "enter attribute name",
+            value: ""
+          });
+        };
+        
+        $scope.save = function () {
+            window.alert("Call API here to save the object");
+        }
+      }
+
+
+    </script>
+  </body>
+</html>
