@@ -5,10 +5,10 @@
 
   <body>
     <h1>Dynamic Attributes</h1>
-    <div ng-controller="FoodItem">
+    <div ng-controller="EditController">
       <div ng-repeat="attrib in attribs">
         <input type="text" placeholder="{{attrib.namePlaceholder}}" ng-model="attrib.name">
-        <input type="text" placeholder="enter value ..." ng-model="attrib.text">
+        <input type="text" placeholder="enter value ..." ng-model="attrib.value">
       </div>
       <button ng-click="add()">New Attribute</button>
       <button ng-click="save()">Save Object</button>
@@ -17,7 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
     <script type="text/javascript">
 
-      var FoodItem = function($scope){
+      var EditController = function($scope, $http){
         $scope.attribs = [];
 
         $scope.add = function () {
@@ -26,10 +26,20 @@
             namePlaceholder: "enter attribute name",
             value: ""
           });
-        };
+        };        
         
         $scope.save = function () {
-            window.alert("Call API here to save the object");
+            var dynObject = {};
+            
+            $scope.attribs.forEach( function (attrib) {
+              dynObject[attrib.name] = attrib.value;
+            });
+            
+            $http.post('/object', dynObject)
+              .success(function(data, status, headers, config) {
+                window.alert("API called. Server says: " + data);
+              });
+            
         }
       }
 

@@ -1,0 +1,27 @@
+{
+  "name": "dynattr",
+  "version": "1.0.0",
+  "description": "Proof of saving dynamic attribute concept",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradubv/dynattr.git"
+  },
+  "keywords": [
+    "concept"
+  ],
+  "author": "Bogdan V. Bradu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradubv/dynattr/issues"
+  },
+  "homepage": "https://github.com/bradubv/dynattr#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongojs": "^2.4.0"
+  }
+}
